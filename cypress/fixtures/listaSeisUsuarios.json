@@ -1,0 +1,44 @@
+[
+    {
+        "id": "5ba50491-e2ba-4641-874c-41ec413e09a2",
+        "name": "Coxinha",
+        "email": "coxinha@dog.com",
+        "createdAt": "2024-04-28T21:58:04.810Z",
+        "updatedAt": "2024-04-28T21:58:04.810Z"
+    },
+    {
+        "id": "532602d1-f46e-40dc-a493-1f2e2b8572f2",
+        "name": "Earnestine",
+        "email": "icie.schmitt39@hotmail.com",
+        "createdAt": "2024-04-28T21:58:43.709Z",
+        "updatedAt": "2024-04-28T21:58:43.709Z"
+    },
+    {
+        "id": "ed135f21-68ae-4137-b482-59c0a20e4c91",
+        "name": "merilyn",
+        "email": "merilyn@qa.com.br",
+        "createdAt": "2024-04-28T21:58:50.598Z",
+        "updatedAt": "2024-04-28T21:58:50.598Z"
+    },
+    {
+        "id": "830c4740-3e77-4414-b375-d6cdb56bae54",
+        "name": "Camryn",
+        "email": "lou2@hotmail.com",
+        "createdAt": "2024-04-28T21:59:51.694Z",
+        "updatedAt": "2024-04-28T21:59:51.694Z"
+    },
+    {
+        "id": "8d3822ed-6f52-42a4-bea6-c02dd576b8e7",
+        "name": "Harry",
+        "email": "albina.mayert45@gmail.com",
+        "createdAt": "2024-04-28T22:00:42.078Z",
+        "updatedAt": "2024-04-28T22:00:42.078Z"
+    },
+    {
+        "id": "f9c383ad-3ffa-4216-8173-28c605067b68",
+        "name": "testeraro",
+        "email": "jermaine_lockman98@gmail.com",
+        "createdAt": "2024-04-28T22:01:13.709Z",
+        "updatedAt": "2024-04-28T22:01:13.709Z"
+    }
+]
