@@ -1,6 +1,6 @@
 # language: pt
 
-Funcionalidade: Listagem de usuários
+Funcionalidade: Listagem de usuário
 
 Contexto: Acesso à pagina inicial
 Dado que acessei a página do site

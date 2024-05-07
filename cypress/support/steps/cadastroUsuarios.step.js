@@ -16,11 +16,11 @@ Given('que acessei o site', function () {
     cy.wait('@getUsers');
 });
 
-When('acesso a área de cadastro de usuários', function () { 
+When('acesso a área de cadastro de usuários', function () {
     paginaCadastro.clickButtonNovo();
 });
 
-When('informo o nome válido {string}', function (nome) { 
+When('informo o nome válido {string}', function (nome) {
     paginaCadastro.typeNome(nome);
 });
 
@@ -30,20 +30,21 @@ When('informo um email válido', function () {
     paginaCadastro.typeEmail(novoEmail);
 });
 
-When('confirmo a operação', function () { 
+When('confirmo a operação', function () {
     cy.intercept('POST', '/api/v1/users').as('postUsers');
     paginaCadastro.clickButtonSalvar();
+    cy.wait('@postUsers');
 });
 
-When('informo o nome inválido {string}', function (nome) { 
+When('informo o nome inválido {string}', function (nome) {
     cy.get(paginaCadastro.inputNome).type(nome);
 });
 
-When('informo o email inválido {string}', function (email) { 
+When('informo o email inválido {string}', function (email) {
     paginaCadastro.typeEmail(email);
 });
 
-When('o usuário recém cadastrado aparecerá na lista de usuários', function(){
+When('o usuário recém cadastrado aparecerá na lista de usuários', function () {
     cy.intercept('GET', '/api/v1/search*').as('searchUser');
     paginaCadastro.clickButtonVoltar();
     cy.wait('@getUsers');
@@ -53,12 +54,12 @@ When('o usuário recém cadastrado aparecerá na lista de usuários', function()
     cy.get(paginaEdicao.inputEmail).invoke('val').should('equal', this.emailFaker);
 });
 
-When('informo um email já em uso', function(){
+When('informo um email já em uso', function () {
     novoEmail = faker.internet.email().toLowerCase();
     paginaCadastro.typeEmail(novoEmail);
 });
 
-When('confirmo a operação acima', function () { 
+When('confirmo a operação acima', function () {
     cy.intercept('POST', '/api/v1/users', {
         statusCode: 422,
         body: {
@@ -66,37 +67,36 @@ When('confirmo a operação acima', function () {
         }
     }).as('postUserErro');
     paginaCadastro.clickButtonSalvar();
-    
+
     cy.wait('@postUserErro');
 });
 
 Then('a mensagem de usuário cadastrado será exibida', function () {
-    cy.wait('@postUsers'); 
     cy.get(paginaCadastro.messageUsuarioSalvo).should('contain', 'Usuário salvo com sucesso!');
 });
 
-Then('uma mensagem de erro será exibida', function(){
+Then('uma mensagem de erro aparecerá na tela', function () {
     cy.get(paginaCadastro.headerErro).invoke('text').should('equal', 'Erro');
     cy.get(paginaCadastro.headerTextoErro).invoke('text').should('equal', 'Este e-mail já é utilizado por outro usuário.');
     paginaCadastro.clickButtonCancelar();
 });
 
-Then('não será possível concluir a tentativa de cadastro do usuário', function () { 
+Then('não será possível concluir a tentativa de cadastro do usuário', function () {
     cy.get(paginaCadastro.messageError).invoke('text').should('equal', 'Formato de e-mail inválido');
-}); 
+});
 
-Then('não será possível concluir a tentativa de cadastro do usuário acima', function () { 
+Then('não será possível concluir a tentativa de cadastro do usuário acima', function () {
     cy.get(paginaCadastro.messageError).invoke('text').should('equal', 'Informe pelo menos 4 letras para o nome.');
-}); 
+});
 
-Then('não vai ser possível concluir a tentativa de cadastro do usuário', function () { 
+Then('não vai ser possível concluir a tentativa de cadastro do usuário', function () {
     cy.get(paginaCadastro.messageError).invoke('text').should('equal', 'Informe no máximo 100 caracteres para o nome');
-}); 
+});
 
-Then('não será possível concluir a tentativa de cadastro desse usuário', function () { 
+Then('não será possível concluir a tentativa de cadastro desse usuário', function () {
     cy.get(paginaCadastro.messageError).invoke('text').should('equal', 'Informe no máximo 60 caracteres para o e-mail');
-}); 
+});
 
-Then('não será possível concluir a tentativa de cadastro deste usuário', function () { 
+Then('não será possível concluir a tentativa de cadastro deste usuário', function () {
     cy.get(paginaCadastro.messageError).invoke('text').should('equal', 'Informe pelo menos 4 caracteres para o e-mail.');
 }); 
