@@ -23,12 +23,17 @@ export default class PaginaInicial {
         cy.get(this.buttonPesquisa).should('be.visible').click().type(pesquisa);
     }
 
+    justClickButtonPesquisa() {
+        cy.get(this.buttonPesquisa).should('be.visible').click();
+    }
+
     clickButtonVerDetalhes() {
         cy.get(this.buttonVerDetalhes).should('be.visible').click();
     }
 
+
     getListaUsuarios() {
-        return cy.get(this.listaUsuarios).should('be.visible');
+        return cy.get(this.listaUsuarios);
     }
 
     clickNextPage() {
