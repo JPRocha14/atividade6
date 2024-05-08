@@ -13,7 +13,6 @@ var userEmail1;
 var userName2;
 var userEmail2;
 var novoEmail = faker.internet.email().toLowerCase();
-var id;
 
 Before({ tags: '@attUser' }, function () {
     userName1 = faker.person.firstName() + ' Rocha';
@@ -55,6 +54,22 @@ When('acesso a área de detalhes do usuário', function () {
 
 When('seleciono a opção de editar o usuário', function () {
     paginaEdicao.clickButtonEditar();
+});
+
+When('apago as informações do email', function () {
+    paginaEdicao.clearEmail();
+});
+
+When('apago as informações do nome', function () {
+    paginaEdicao.clearNome();
+});
+
+When('não preencho o campo', function () {
+    paginaEdicao.typeNome(' ');
+});
+
+When('não preencho este campo', function () {
+    paginaEdicao.typeEmail(' ');
 });
 
 When('altero o email para um já existente', function () {
@@ -131,15 +146,15 @@ Then('uma mensagem de erro aparecerá', function () {
     cy.get(paginaEdicao.messageError).invoke('text').should('equal', 'Informe pelo menos 4 caracteres para o e-mail.');
 });
 
-Then('a operação não será executada', function () {
-
-});
-
 Then('duas mensagens de alerta são exibidas', function () {
     cy.get(paginaInicial.headerErro).invoke('text').should('equal', 'Ops! Não existe nenhum usuário para ser exibido.');
     cy.get(paginaInicial.linkCadastrarUsuario).invoke('text').should('equal', 'Cadastre um novo usuário');
 });
 
 Then('não consigo prosseguir com a atualização', function () {
+
+});
+
+Then('a operação não será executada', function () {
 
 });

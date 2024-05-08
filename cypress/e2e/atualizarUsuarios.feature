@@ -86,3 +86,22 @@ E tento editar seu email para "a@."
 E confirmo esta operação
 Então uma mensagem de erro aparecerá
 E a operação não será executada
+
+Cenário: Não deve ser possível atualizar o nome para um nome vazio
+Quando encontro o usuário desejado
+E acesso a área de detalhes do usuário
+E seleciono a opção de editar o usuário
+E apago as informações do nome
+E não preencho o campo
+E confirmo esta operação
+Então a operação será invalidada
+
+Cenário: Não deve ser possível atualizar o email para um email vazio
+Quando encontro o usuário desejado
+E acesso a área de detalhes do usuário
+E seleciono a opção de editar o usuário
+E apago as informações do email
+E não preencho este campo
+E confirmo esta operação
+Então uma mensagem de erro aparecerá
+E a operação não será executada
