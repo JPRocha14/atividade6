@@ -15,27 +15,16 @@ var userEmail2;
 var novoEmail = faker.internet.email().toLowerCase();
 
 Before({ tags: '@attUser' }, function () {
+    // criação de usuário para ser utilizado na maioria dos testes
     userName1 = faker.person.firstName() + ' Rocha';
     userEmail1 = faker.internet.email().toLowerCase();
-    cy.request({
-        method: 'POST',
-        url: 'https://rarocrud-80bf38b38f1f.herokuapp.com/api/v1/users',
-        body: {
-            name: userName1,
-            email: userEmail1,
-        }
-    });
+    cy.cadastroUser1(userName1, userEmail1);
 
+    // criação de usuário secundário para ser utilizado no teste
+    // de atualizar para um email já cadastrado
     userName2 = faker.person.firstName() + ' Dias';
     userEmail2 = faker.internet.email().toLowerCase();
-    cy.request({
-        method: 'POST',
-        url: 'https://rarocrud-80bf38b38f1f.herokuapp.com/api/v1/users',
-        body: {
-            name: userName2,
-            email: userEmail2,
-        }
-    });
+    cy.cadastroUser2(userName2, userEmail2);
 });
 
 Given('que acessei o sistema do site', function () {

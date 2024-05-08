@@ -23,3 +23,25 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('cadastroUser1', function (nome1, email1) {
+    return cy.request({
+        method: 'POST',
+        url: 'https://rarocrud-80bf38b38f1f.herokuapp.com/api/v1/users',
+        body: {
+            name: nome1,
+            email: email1,
+        }
+    });
+});
+
+Cypress.Commands.add('cadastroUser2', function (nome2, email2) {
+    return cy.request({
+        method: 'POST',
+        url: 'https://rarocrud-80bf38b38f1f.herokuapp.com/api/v1/users',
+        body: {
+            name: nome2,
+            email: email2,
+        }
+    });
+})

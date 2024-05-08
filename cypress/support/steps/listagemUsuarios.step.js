@@ -13,14 +13,7 @@ var nome = 'João Pedro';
 var emailRequest = faker.internet.email().toLowerCase();
 
 Before({ tags: '@criarUsuario' }, function () {
-    cy.request({
-        method: 'POST',
-        url: 'https://rarocrud-80bf38b38f1f.herokuapp.com/api/v1/users',
-        body: {
-            name: nome,
-            email: emailRequest,
-        }
-    });
+    cy.cadastroUser1(nome, emailRequest);
 });
 
 Given('que acessei a página do site', function () {
